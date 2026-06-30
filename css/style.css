@@ -864,34 +864,140 @@ section {
   color: rgba(254, 252, 250, 0.5);
 }
 
-/* -------- Responsive -------- */
-@media (max-width: 968px) {
-  .hero .container {
-    grid-template-columns: 1fr;
-    text-align: center;
+/* ============================================
+   GRID UTILITAIRES (utilisés dans le HTML)
+   ============================================ */
+
+/* Grille 2 colonnes auto-responsive (s'empile sous 900px) */
+.two-col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+  align-items: start;
+}
+
+.two-col-aligned-center {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+/* ============================================
+   FORMULAIRES (page contact)
+   ============================================ */
+.form-group {
+  margin-bottom: var(--space-sm);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gris-doux);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.9rem;
+  border: 1px solid rgba(212, 165, 165, 0.3);
+  background: var(--creme-clair);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--noir-doux);
+  transition: border-color var(--transition-fast);
+  min-height: 44px;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--rose-poudre-fonce);
+  background: var(--blanc-casse);
+}
+
+/* ============================================
+   HORAIRES (page contact)
+   ============================================ */
+.hours-box {
+  background: var(--creme);
+  padding: var(--space-md);
+  border: 1px solid rgba(212, 165, 165, 0.2);
+}
+
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+  border-bottom: 1px dashed rgba(212, 165, 165, 0.3);
+}
+
+.hours-row:last-child {
+  border-bottom: none;
+}
+
+/* ============================================
+   PRICE TAG (service-card)
+   ============================================ */
+.price-tag {
+  color: var(--rose-poudre-fonce);
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  display: block;
+  margin-top: var(--space-xs);
+}
+
+/* ============================================
+   IFRAME MAP (page contact)
+   ============================================ */
+.map-wrap {
+  border: 1px solid rgba(212, 165, 165, 0.3);
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: var(--shadow-soft);
+}
+
+.map-wrap iframe {
+  width: 100%;
+  height: 450px;
+  border: 0;
+  display: block;
+}
+
+/* ============================================
+   IMAGE arrondie utilitaire
+   ============================================ */
+.rounded-image {
+  border-radius: 4px;
+  box-shadow: var(--shadow-medium);
+}
+
+/* ============================================
+   RESPONSIVE — Grand écran (> 1400px)
+   ============================================ */
+@media (min-width: 1400px) {
+  :root {
+    --container-max: 1320px;
   }
 
-  .hero-image {
-    order: -1;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-
-  .hero-cta {
-    justify-content: center;
-  }
-
-  .footer .container {
-    grid-template-columns: 1fr 1fr;
+  h1 {
+    font-size: 4.2rem;
   }
 }
 
-@media (max-width: 768px) {
-  :root {
-    --space-xl: 4rem;
-    --space-lg: 3rem;
-  }
-
+/* ============================================
+   RESPONSIVE — Petit desktop / Grande tablette (max 1100px)
+   Navbar trop chargée → hamburger plus tôt
+   ============================================ */
+@media (max-width: 1100px) {
   .navbar .container {
     flex-wrap: wrap;
   }
@@ -904,9 +1010,11 @@ section {
     flex-direction: column;
     width: 100%;
     background-color: var(--blanc-casse);
-    padding: var(--space-md) 0;
+    padding: var(--space-sm) 0;
     gap: 0;
     display: none;
+    margin-top: 0.8rem;
+    border-top: 1px solid rgba(212, 165, 165, 0.15);
   }
 
   .nav-menu.open {
@@ -919,12 +1027,99 @@ section {
     padding: 0.7rem 0;
   }
 
+  .nav-menu a.active::after {
+    display: none;
+  }
+
   .nav-cta {
-    margin: var(--space-sm) auto 0;
+    margin: var(--space-xs) auto;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — Tablette (max 968px)
+   ============================================ */
+@media (max-width: 968px) {
+  .hero .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-image {
+    order: -1;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .hero-content h1 {
+    text-align: center;
+  }
+
+  .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-cta {
+    justify-content: center;
+  }
+
+  .footer .container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Grilles 2-col → 1-col sous tablette */
+  .two-col,
+  .two-col-aligned-center {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    text-align: center;
+  }
+
+  .two-col-aligned-center img {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* Sections plus aérées sur tablette */
+  section {
+    padding: var(--space-lg) 0;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — Mobile (max 768px)
+   ============================================ */
+@media (max-width: 768px) {
+  :root {
+    --space-xl: 3.5rem;
+    --space-lg: 2.5rem;
+    --space-md: 1.5rem;
+  }
+
+  html {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: clamp(1.9rem, 7vw, 2.6rem);
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 5vw, 2.1rem);
   }
 
   .hero {
     min-height: auto;
+    padding: var(--space-lg) 0;
+  }
+
+  .hero-content h1 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem;
   }
 
   .hero-cta {
@@ -934,17 +1129,191 @@ section {
 
   .hero-cta .btn {
     text-align: center;
+    width: 100%;
   }
 
+  .btn {
+    padding: 0.9rem 1.5rem;
+    font-size: 0.8rem;
+    min-height: 44px;
+  }
+
+  /* Services grid : 1 colonne sous mobile */
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  /* Pricing : reste lisible avec prix bien visible */
+  .pricing-row {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .pricing-info {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .pricing-name {
+    word-wrap: break-word;
+  }
+
+  /* Cards et testimonials plus compactes */
+  .service-card,
+  .testimonial {
+    padding: var(--space-sm);
+  }
+
+  /* CTA Block plus compact */
+  .cta-block {
+    padding: var(--space-lg) var(--space-sm);
+    margin: var(--space-md) 0;
+  }
+
+  /* Footer 1 colonne */
   .footer .container {
     grid-template-columns: 1fr;
     gap: var(--space-md);
+    text-align: center;
   }
 
+  .footer-hours div {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  /* FAQ touch-friendly */
+  .faq-question {
+    padding: 0.8rem 0;
+    font-size: 1.05rem;
+    min-height: 44px;
+  }
+
+  /* Section-title underline plus court */
+  .section-title::after {
+    width: 40px;
+  }
+
+  /* Page hero plus compacte */
+  .page-hero {
+    padding: var(--space-md) 0;
+  }
+
+  /* Map plus courte */
+  .map-wrap iframe {
+    height: 350px;
+  }
+
+  /* Steps : empilées avec compteur plus petit */
+  .step::before {
+    font-size: 2.2rem;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — Très petit mobile (max 420px)
+   ============================================ */
+@media (max-width: 420px) {
+  :root {
+    --container-pad: 1rem;
+    --space-xl: 3rem;
+    --space-lg: 2rem;
+  }
+
+  h1 {
+    font-size: clamp(1.7rem, 8vw, 2.2rem);
+  }
+
+  .nav-logo {
+    font-size: 1.4rem;
+  }
+
+  .hero-cta .btn,
+  .nav-cta .btn {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    padding: 0.85rem 1.2rem;
+  }
+
+  .eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+  }
+
+  /* Pricing : prix bien visible, colonne quand vraiment étroit */
   .pricing-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.3rem;
+    padding: 0.7rem 0;
+  }
+
+  .pricing-price {
+    font-size: 1.15rem;
+  }
+
+  /* Hero image plus petite */
+  .hero-image {
+    max-width: 100%;
+  }
+
+  .hero-image::before {
+    display: none;
+  }
+
+  /* CTA block padding minimum */
+  .cta-block {
+    padding: var(--space-md) var(--space-sm);
+  }
+
+  /* Pas de scroll horizontal */
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — Orientation paysage mobile
+   ============================================ */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: auto;
+    padding: var(--space-md) 0;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITÉ — préférences utilisateur
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus visible amélioré */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--rose-poudre-fonce);
+  outline-offset: 2px;
+}
+
+/* Print styles basique */
+@media print {
+  .navbar,
+  .nav-cta,
+  .cta-block,
+  .hero-cta,
+  .footer {
+    display: none;
+  }
+
+  body {
+    color: #000;
+    background: #fff;
   }
 }
 

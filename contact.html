@@ -56,7 +56,7 @@
 
   <section class="section-white">
     <div class="container">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-lg);">
+      <div class="two-col-aligned-center" style="align-items:start;">
         <div>
           <h2 class="brush-stroke">Coordonnées</h2>
 
@@ -71,35 +71,35 @@
           <a href="https://www.planity.com/elema-beaute-38140-rives" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:var(--space-xs);">Réserver sur Planity</a></p>
 
           <h3 style="margin-top:var(--space-md);">Horaires d'ouverture</h3>
-          <div style="background:var(--creme);padding:var(--space-md);border:1px solid rgba(212,165,165,0.2);">
-            <div style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px dashed rgba(212,165,165,0.3);"><span>Lundi</span><strong>Fermé</strong></div>
-            <div style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px dashed rgba(212,165,165,0.3);"><span>Mardi</span><strong>9h – 19h</strong></div>
-            <div style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px dashed rgba(212,165,165,0.3);"><span>Mercredi</span><strong>9h – 19h</strong></div>
-            <div style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px dashed rgba(212,165,165,0.3);"><span>Jeudi</span><strong>9h – 19h</strong></div>
-            <div style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px dashed rgba(212,165,165,0.3);"><span>Vendredi</span><strong>9h – 19h</strong></div>
-            <div style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px dashed rgba(212,165,165,0.3);"><span>Samedi</span><strong>9h – 15h</strong></div>
-            <div style="display:flex;justify-content:space-between;padding:0.4rem 0;"><span>Dimanche</span><strong>Fermé</strong></div>
+          <div class="hours-box">
+            <div class="hours-row"><span>Lundi</span><strong>Fermé</strong></div>
+            <div class="hours-row"><span>Mardi</span><strong>9h – 19h</strong></div>
+            <div class="hours-row"><span>Mercredi</span><strong>9h – 19h</strong></div>
+            <div class="hours-row"><span>Jeudi</span><strong>9h – 19h</strong></div>
+            <div class="hours-row"><span>Vendredi</span><strong>9h – 19h</strong></div>
+            <div class="hours-row"><span>Samedi</span><strong>9h – 15h</strong></div>
+            <div class="hours-row"><span>Dimanche</span><strong>Fermé</strong></div>
           </div>
         </div>
 
         <div>
           <h2 class="brush-stroke">Nous écrire</h2>
           <form action="mailto:contact@elemabeaute.fr" method="post" enctype="text/plain" style="margin-top:var(--space-md);">
-            <div style="margin-bottom:var(--space-sm);">
-              <label for="name" style="display:block;margin-bottom:0.3rem;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gris-doux);">Nom & Prénom</label>
-              <input type="text" id="name" name="name" required style="width:100%;padding:0.8rem;border:1px solid rgba(212,165,165,0.3);background:var(--creme-clair);font-family:var(--font-sans);font-size:1rem;">
+            <div class="form-group">
+              <label for="name">Nom & Prénom</label>
+              <input type="text" id="name" name="name" required autocomplete="name">
             </div>
-            <div style="margin-bottom:var(--space-sm);">
-              <label for="email" style="display:block;margin-bottom:0.3rem;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gris-doux);">Email</label>
-              <input type="email" id="email" name="email" required style="width:100%;padding:0.8rem;border:1px solid rgba(212,165,165,0.3);background:var(--creme-clair);font-family:var(--font-sans);font-size:1rem;">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required autocomplete="email">
             </div>
-            <div style="margin-bottom:var(--space-sm);">
-              <label for="phone" style="display:block;margin-bottom:0.3rem;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gris-doux);">Téléphone (optionnel)</label>
-              <input type="tel" id="phone" name="phone" style="width:100%;padding:0.8rem;border:1px solid rgba(212,165,165,0.3);background:var(--creme-clair);font-family:var(--font-sans);font-size:1rem;">
+            <div class="form-group">
+              <label for="phone">Téléphone (optionnel)</label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel">
             </div>
-            <div style="margin-bottom:var(--space-sm);">
-              <label for="message" style="display:block;margin-bottom:0.3rem;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gris-doux);">Votre message</label>
-              <textarea id="message" name="message" rows="5" required style="width:100%;padding:0.8rem;border:1px solid rgba(212,165,165,0.3);background:var(--creme-clair);font-family:var(--font-sans);font-size:1rem;resize:vertical;"></textarea>
+            <div class="form-group">
+              <label for="message">Votre message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Envoyer mon message</button>
           </form>
@@ -115,19 +115,16 @@
       <h2 class="section-title">Nous trouver</h2>
       <p class="section-intro">Au 96 rue de la République, en plein centre de Rives. Accès facile depuis Voiron, Renage, Beaucroissant, Tullins et Moirans.</p>
 
-      <div style="border:1px solid rgba(212,165,165,0.3);overflow:hidden;border-radius:4px;box-shadow:var(--shadow-soft);">
+      <div class="map-wrap">
         <iframe
           src="https://www.google.com/maps?q=96+Rue+de+la+République,+38140+Rives&hl=fr&output=embed"
-          width="100%"
-          height="450"
-          style="border:0;display:block;"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           title="Plan d'accès à Elema'Beauté à Rives"></iframe>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--space-md);margin-top:var(--space-md);">
+      <div class="benefits-grid" style="margin-top:var(--space-md);">
         <div class="benefit">
           <h4>Depuis Voiron</h4>
           <p>15 minutes par la D520, parking facile à proximité.</p>
