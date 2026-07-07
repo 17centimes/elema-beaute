@@ -27,6 +27,41 @@
     });
   }
 
+  /* -------- Dropdown navigation -------- */
+  document.querySelectorAll('.has-dropdown').forEach((item) => {
+    const toggle = item.querySelector('.dropdown-toggle');
+    if (!toggle) return;
+
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const wasOpen = item.classList.contains('open');
+      // Ferme les autres dropdowns
+      document.querySelectorAll('.has-dropdown.open').forEach((other) => {
+        if (other !== item) other.classList.remove('open');
+      });
+      item.classList.toggle('open', !wasOpen);
+      toggle.setAttribute('aria-expanded', !wasOpen);
+    });
+
+    // Support clavier
+    toggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        item.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  // Ferme les dropdowns au clic à l'extérieur
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.has-dropdown')) {
+      document.querySelectorAll('.has-dropdown.open').forEach((item) => {
+        item.classList.remove('open');
+      });
+    }
+  });
+
   /* -------- FAQ accordéon -------- */
   document.querySelectorAll('.faq-item').forEach((item) => {
     const question = item.querySelector('.faq-question');
