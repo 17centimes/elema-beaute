@@ -142,6 +142,15 @@
     start();
   });
 
+  /* -------- Slider Avant / Après -------- */
+  document.querySelectorAll('[data-ba]').forEach((slider) => {
+    const range = slider.querySelector('.ba-range');
+    if (!range) return;
+    const update = () => slider.style.setProperty('--pos', range.value + '%');
+    range.addEventListener('input', update);
+    update();
+  });
+
   /* -------- Année footer dynamique -------- */
   const yearEl = document.getElementById('current-year');
   if (yearEl) {
