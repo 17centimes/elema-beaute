@@ -245,7 +245,7 @@ section {
 .nav-logo-top,
 .nav-logo-bottom {
   font-family: var(--font-serif);
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   display: block;
   transition: color var(--transition-fast);
@@ -423,6 +423,12 @@ section {
 
 .nav-cta {
   margin-left: 1rem;
+}
+
+/* Bouton Réserver de la navbar : texte blanc pour bien ressortir sur le fond rose/marron */
+.nav-cta .btn,
+.nav-cta .btn:hover {
+  color: #fff;
 }
 
 /* -------- Hero -------- */
@@ -941,8 +947,54 @@ section {
 }
 
 .footer-brand p {
-  color: rgba(254, 252, 250, 0.7);
+  color: rgba(254, 252, 250, 0.88);
   font-size: 0.95rem;
+}
+
+/* Logo Elema'Beauté en pied de page (fond sombre) */
+.footer-logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  text-decoration: none;
+  line-height: 1;
+  margin-bottom: var(--space-sm);
+}
+
+.footer-logo-top,
+.footer-logo-bottom {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  text-transform: uppercase;
+  display: block;
+}
+
+.footer-logo-top {
+  font-size: 1.5rem;
+  letter-spacing: 0.32em;
+  padding-left: 0.32em;
+  color: var(--blanc-casse);
+  position: relative;
+  padding-bottom: 0.34rem;
+}
+
+.footer-logo-top::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 34px;
+  height: 1px;
+  background-color: var(--rose-poudre);
+}
+
+.footer-logo-bottom {
+  font-size: 0.85rem;
+  letter-spacing: 0.48em;
+  padding-left: 0.48em;
+  color: var(--rose-poudre-clair);
 }
 
 .footer h4 {
