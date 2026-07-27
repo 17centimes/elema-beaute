@@ -234,17 +234,53 @@ section {
 }
 
 .nav-logo {
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
-  font-weight: 500;
-  color: var(--noir-doux);
-  letter-spacing: 0.04em;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
   text-decoration: none;
+  line-height: 1;
 }
 
-.nav-logo span {
+.nav-logo-top,
+.nav-logo-bottom {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  text-transform: uppercase;
+  display: block;
+  transition: color var(--transition-fast);
+}
+
+.nav-logo-top {
+  font-size: 1.45rem;
+  letter-spacing: 0.34em;
+  padding-left: 0.34em;
+  color: var(--noir-doux);
+  position: relative;
+  padding-bottom: 0.34rem;
+}
+
+.nav-logo-top::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 34px;
+  height: 1px;
+  background-color: var(--rose-poudre);
+}
+
+.nav-logo-bottom {
+  font-size: 0.82rem;
+  letter-spacing: 0.5em;
+  padding-left: 0.5em;
   color: var(--rose-poudre-fonce);
-  font-style: italic;
+}
+
+.nav-logo:hover .nav-logo-top,
+.nav-logo:hover .nav-logo-bottom {
+  color: var(--rose-poudre-fonce);
 }
 
 .nav-menu {
@@ -540,13 +576,16 @@ section {
 
 /* -------- Cards services -------- */
 .services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: var(--space-md);
   margin-top: var(--space-md);
 }
 
 .service-card {
+  flex: 1 1 280px;
+  max-width: 360px;
   background-color: var(--blanc-casse);
   padding: var(--space-md);
   border: 1px solid rgba(212, 165, 165, 0.2);
@@ -656,13 +695,16 @@ section {
 
 /* -------- Benefits / Listes valorisées -------- */
 .benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: var(--space-md);
   margin: var(--space-md) 0;
 }
 
 .benefit {
+  flex: 1 1 250px;
+  max-width: 320px;
   text-align: center;
   padding: var(--space-sm);
 }
@@ -1125,21 +1167,40 @@ section {
     display: none;
   }
 
+  /* CTA Réserver — pleine largeur, bien visible dans le menu mobile */
   .nav-cta {
-    margin: var(--space-xs) auto;
+    width: 100%;
+    margin: var(--space-sm) 0 0;
+    padding: 0 var(--space-md);
+  }
+
+  .nav-cta .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 1.5rem;
+    font-size: 0.85rem;
+    box-shadow: 0 6px 18px rgba(184, 133, 133, 0.28);
   }
 
   /* Dropdown en mode accordéon sur mobile/tablette */
   .has-dropdown {
     width: 100%;
-    padding: 0.7rem 0;
+    padding: 0;
     text-align: center;
   }
 
   .dropdown-toggle {
     width: 100%;
     justify-content: center;
-    padding: 0;
+    gap: 0.55rem;
+    padding: 0.7rem 0;
+  }
+
+  /* Flèche plus visible pour signaler que c'est déroulant */
+  .dropdown-toggle::after {
+    font-size: 0.9rem;
+    color: var(--rose-poudre-fonce);
   }
 
   .dropdown-menu {
@@ -1150,26 +1211,34 @@ section {
     border: none;
     background-color: transparent;
     padding: 0;
-    margin-top: 0;
+    margin: 0 var(--space-md);
     opacity: 1;
     visibility: visible;
     max-height: 0;
     overflow: hidden;
-    transition: max-height var(--transition);
+    border-radius: 10px;
+    transition: max-height 0.35s ease, padding 0.35s ease;
   }
 
   .has-dropdown.open .dropdown-menu {
-    max-height: 500px;
-    padding: 0.5rem 0;
+    transform: none;
+    max-height: 600px;
+    padding: 0.35rem 0;
+    background-color: var(--creme-clair);
   }
 
   .dropdown-menu a {
+    display: block;
     text-align: center;
-    padding: 0.55rem 1rem;
+    padding: 0.85rem 1rem;
     border-left: none;
-    font-size: 0.75rem;
-    letter-spacing: 0.18em;
-    color: var(--gris-doux);
+    font-size: 0.82rem;
+    letter-spacing: 0.15em;
+    color: var(--noir-doux);
+  }
+
+  .dropdown-menu li + li a {
+    border-top: 1px solid rgba(212, 165, 165, 0.22);
   }
 
   .dropdown-menu a:hover,
@@ -1284,8 +1353,12 @@ section {
 
   /* Services grid : 1 colonne sous mobile */
   .services-grid {
-    grid-template-columns: 1fr;
     gap: var(--space-sm);
+  }
+
+  .service-card {
+    flex-basis: 100%;
+    max-width: 100%;
   }
 
   /* Pricing : reste lisible avec prix bien visible */
