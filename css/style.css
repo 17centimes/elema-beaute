@@ -595,6 +595,13 @@ section {
   content: " →";
 }
 
+.service-group-title {
+  text-align: center;
+  font-size: 1.6rem;
+  color: var(--rose-poudre-fonce);
+  margin: var(--space-lg) 0 0;
+}
+
 /* -------- Tableau prix -------- */
 .pricing-table {
   margin: var(--space-md) 0;
