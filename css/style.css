@@ -557,6 +557,62 @@ section {
   font-size: 1.1rem;
 }
 
+/* Page-hero avec bannière (2 colonnes : texte + image) */
+.page-hero--banner {
+  text-align: left;
+}
+
+.page-hero--banner .container {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+.page-hero--banner p {
+  max-width: 560px;
+  margin: 0;
+}
+
+.page-hero--banner .page-hero-image {
+  position: relative;
+}
+
+.page-hero--banner .page-hero-image img {
+  border-radius: 4px;
+  box-shadow: var(--shadow-medium);
+}
+
+.page-hero--banner .page-hero-image::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  right: -18px;
+  bottom: -18px;
+  border: 1px solid var(--rose-poudre);
+  z-index: -1;
+}
+
+@media (max-width: 968px) {
+  .page-hero--banner {
+    text-align: center;
+  }
+  .page-hero--banner .container {
+    grid-template-columns: 1fr;
+  }
+  .page-hero--banner p {
+    margin: 0 auto;
+  }
+  .page-hero--banner .page-hero-image {
+    order: -1;
+    margin-bottom: var(--space-md);
+  }
+  .page-hero--banner .page-hero-image::before {
+    display: none;
+  }
+}
+
 .breadcrumb {
   font-size: 0.85rem;
   color: var(--gris-clair);
