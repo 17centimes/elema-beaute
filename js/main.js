@@ -109,6 +109,39 @@
 
   document.querySelectorAll('.observe-fade').forEach((el) => observer.observe(el));
 
+  /* -------- Carrousel bannière -------- */
+  document.querySelectorAll('[data-carousel]').forEach((car) => {
+    const slides = Array.from(car.querySelectorAll('.carousel-slide'));
+    const dots = Array.from(car.querySelectorAll('.carousel-dot'));
+    if (slides.length < 2) return;
+
+    let index = 0;
+    let timer = null;
+
+    const show = (n) => {
+      index = (n + slides.length) % slides.length;
+      slides.forEach((s, i) => s.classList.toggle('is-active', i === index));
+      dots.forEach((d, i) => d.classList.toggle('is-active', i === index));
+    };
+
+    const start = () => {
+      stop();
+      timer = setInterval(() => show(index + 1), 5000);
+    };
+    const stop = () => {
+      if (timer) clearInterval(timer);
+    };
+
+    car.querySelector('.carousel-next')?.addEventListener('click', () => { show(index + 1); start(); });
+    car.querySelector('.carousel-prev')?.addEventListener('click', () => { show(index - 1); start(); });
+    dots.forEach((d, i) => d.addEventListener('click', () => { show(i); start(); }));
+
+    car.addEventListener('mouseenter', stop);
+    car.addEventListener('mouseleave', start);
+
+    start();
+  });
+
   /* -------- Année footer dynamique -------- */
   const yearEl = document.getElementById('current-year');
   if (yearEl) {
