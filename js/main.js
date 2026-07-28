@@ -151,6 +151,24 @@
     update();
   });
 
+  /* -------- Galerie carrousel (réalisations) -------- */
+  document.querySelectorAll('[data-gallery]').forEach((gallery) => {
+    const track = gallery.querySelector('.gallery-track');
+    if (!track) return;
+    const stepSize = () => {
+      const item = track.querySelector('.gallery-item');
+      if (!item) return track.clientWidth;
+      const gap = parseFloat(getComputedStyle(track).gap) || 0;
+      return item.getBoundingClientRect().width + gap;
+    };
+    gallery.querySelector('.gallery-next')?.addEventListener('click', () => {
+      track.scrollBy({ left: stepSize(), behavior: 'smooth' });
+    });
+    gallery.querySelector('.gallery-prev')?.addEventListener('click', () => {
+      track.scrollBy({ left: -stepSize(), behavior: 'smooth' });
+    });
+  });
+
   /* -------- Année footer dynamique -------- */
   const yearEl = document.getElementById('current-year');
   if (yearEl) {
