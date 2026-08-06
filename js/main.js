@@ -169,6 +169,22 @@
     });
   });
 
+  /* -------- Carrousel de sliders Avant / Après -------- */
+  document.querySelectorAll('[data-ba-carousel]').forEach((carousel) => {
+    const slides = Array.from(carousel.querySelectorAll('.ba-carousel-slide'));
+    const count = carousel.querySelector('.ba-carousel-count');
+    if (slides.length < 2) return;
+    let index = 0;
+    const show = (n) => {
+      index = (n + slides.length) % slides.length;
+      slides.forEach((s, i) => s.classList.toggle('is-active', i === index));
+      if (count) count.textContent = (index + 1) + ' / ' + slides.length;
+    };
+    carousel.querySelector('.ba-carousel-next')?.addEventListener('click', () => show(index + 1));
+    carousel.querySelector('.ba-carousel-prev')?.addEventListener('click', () => show(index - 1));
+    show(0);
+  });
+
   /* -------- Année footer dynamique -------- */
   const yearEl = document.getElementById('current-year');
   if (yearEl) {

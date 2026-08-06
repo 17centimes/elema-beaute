@@ -781,6 +781,64 @@ section {
   cursor: ew-resize;
 }
 
+/* Carrousel de sliders Avant / Après */
+.ba-carousel {
+  position: relative;
+  max-width: 460px;
+  margin: var(--space-md) auto 0;
+}
+
+.ba-carousel .ba-slider {
+  max-width: none;
+  margin: 0;
+}
+
+.ba-carousel-slide {
+  display: none;
+}
+
+.ba-carousel-slide.is-active {
+  display: block;
+}
+
+.ba-carousel-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+}
+
+.ba-carousel-arrow {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--rose-poudre);
+  background-color: #fff;
+  color: var(--rose-poudre-fonce);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.ba-carousel-arrow:hover {
+  background-color: var(--rose-poudre-fonce);
+  color: #fff;
+}
+
+.ba-carousel-count {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--gris-doux);
+  min-width: 52px;
+  text-align: center;
+}
+
 /* Galerie carrousel (réalisations) */
 .gallery {
   position: relative;
